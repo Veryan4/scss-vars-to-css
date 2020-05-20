@@ -63,6 +63,10 @@ function convert(src, dest) {
                         value = value.replace(oldVariable, '--' + oldVariable.replace('$', ''));
                     }
                 }
+                
+                if(value.includes('http')) {
+                    value = 'url(' + value.replace(';', ');');
+                }
 
                 if(index > 0) {
                     return rebuiltLine += ' ' + value;
